@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -25,6 +27,8 @@ public class CountryServiceImpl implements CountryService {
     private CountryMapper countryMapper;
     @Autowired
     private StringRedisTemplate template;
+
+   // private  volatile  boolean flag = false;
 
     Lock luck = new ReentrantLock();
 
@@ -50,8 +54,16 @@ public class CountryServiceImpl implements CountryService {
         } finally {
           //  luck.unlock();
         }
-
     }
+
+    public static void main(String[] args) {
+        HashMap<String,String> map = new HashMap();
+        map.put("key","value2");
+        map.put("key1","value2");
+        map.put("key","value2");
+        System.out.println(Math.pow(2,3));
+    }
+
 }
 
 

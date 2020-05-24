@@ -6,6 +6,7 @@ import com.king.redis.service.CountryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 1、参数校验
  * 2、使用redis bitMap做一个布隆过滤器
  */
-@Service
+@Service("countryServiceImpl2")
 @Slf4j
 public class CountryServiceImpl2 implements CountryService {
 

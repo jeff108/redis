@@ -4,6 +4,7 @@ import com.king.redis.dao.CountryMapper;
 import com.king.redis.pojo.Country;
 import com.king.redis.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.spring.annotation.MapperScan;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
@@ -28,7 +30,9 @@ public class RedisApplication {
     private CountryMapper countryMapper;
 
     @Autowired
+    @Qualifier("countryServiceImpl2")
     private CountryService countryService;
+
 
     @RequestMapping("test")
     public void test(String id){
@@ -58,8 +62,4 @@ public class RedisApplication {
         template.opsForValue().set(key,value,5,TimeUnit.MINUTES);
         return "succes";
     }
-
-
-
-
 }
